@@ -103,7 +103,15 @@ body.teladelogin{
   
 }
 
-input {
+.my-email-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: -webkit-fill-available;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(230, 230, 230);
+}
+.my-password-input {
     padding: 10px;
     margin-bottom: 10px;
     width: -webkit-fill-available;
@@ -112,7 +120,7 @@ input {
     background-color: rgb(230, 230, 230);
 }
 
-.my-form button {
+.botao {
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -125,19 +133,13 @@ input {
     margin: 4px 2px;
 }
 
-.my-form button:active {
-    opacity: 0.8;
-}
 
-.my-form button[disabled] {
-    opacity: 0.7;
-}
-.clear {
+.my-clear-button {
     background: transparent;
     border: none;
     color:rgb(7, 7, 7);
 }
-.solid {
+.my-solid-button {
     background: rgb(28, 167, 3);
     border: none;
     color: white;
@@ -145,7 +147,7 @@ input {
 
 
 }
-.outline { /*Botão registrar*/
+.my-outline-button { /*Botão registrar*/
     background: transparent;
     color: rgb(102, 102, 102);
     border: 1px solid rgb(255, 255, 255);
