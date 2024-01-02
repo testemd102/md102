@@ -78,3 +78,93 @@ button {
         width: 80%;
     }
 }
+
+/*Tela de login*/
+
+body.teladelogin{
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #9053c7;
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   margin: 0;
+ 
+  
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: -webkit-fill-available;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(230, 230, 230);
+}
+
+.my-form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: -webkit-fill-available;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.my-form button:active {
+    opacity: 0.8;
+}
+
+.my-form button[disabled] {
+    opacity: 0.7;
+}
+.clear {
+    background: transparent;
+    border: none;
+    color:rgb(7, 7, 7);
+}
+.solid {
+    background: rgb(28, 167, 3);
+    border: none;
+    color: white;
+    font-weight: bold; 
+
+
+}
+.outline { /*Botão registrar*/
+    background: transparent;
+    color: rgb(102, 102, 102);
+    border: 1px solid rgb(255, 255, 255);
+}    
+form { /* cor da caixa*/
+    width: 300px;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    padding: 150px;
+    border-radius: 10px
+}
+.membro .titulodomembro{
+    text-align: center; 
+}
+
+.titulodomembro {
+    display: block;
+    font-size: 30px; 
+    font-weight: bold; 
+    margin-bottom: 50px;
+} 
