@@ -12,26 +12,26 @@
         <span class="titulodomembro">
             Área do Membro
         </span>
-        <form class="my-form">
-            <div>
-                <div><label>Email</label></div>
-                <input type="email" name="email" id="email" onchange="validateFields()" placeholder="seu@email.com"/>
-            </div>
-            <div>
-                <div><label>Senha</label></div>
-                <input type="password" name="password" id="password" placeholder="Senha"/>
-            </div>
-            <div>
-                <button type="button" class="my-button clear" id="recover-password-button" disabled="true">Recuperar senha</button>
-            </div>
-            <div>
-                <button type="submit" class="my-button solid" disabled="true">Entrar</button> 
-            </div>
-            <div>       
-                <button type="button" class="my-button outline">Registrar</button>
-            </div>
-        </form>
-        
+    <form class="class">
+        <div>
+        <div><label>Email</label></div>
+        <input type="email" name="email" id="email" onchange="validateFields()"   placeholder="seu@email.com"/>
+        </div>
+        <div>
+        <div><label>Senha</label></div>
+        <input type="password" name="password" id="password" placeholder="Senha"/>
+        </div>
+        <div>
+        <button type="button" class="clear" id="recover-password-button" disabled="true">Recuperar senha</button>
+        </div>
+        <div>
+        <button type="submit" class="solid" disabled="true">Entrar</button> 
+        </div>
+        <div>       
+        <button type="button" class="outline">Registrar</button>
+        </div>
+
+    </form>
 
     <style>
 
@@ -67,25 +67,25 @@ input {
     background-color: rgb(230, 230, 230);
 }
 
-.my-form button {
+button {
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
     width: -webkit-fill-available;
-    border-radius: 20px;
+    border-radius: 20px; /* ajuste o valor conforme necessário */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+ 
 }
-
-.my-form button:active {
-    opacity: 0.8;
+button:active {
+    opacity: 0.8;  
 }
+button[disabled]{
+opacity:0.7;
 
-.my-form button[disabled] {
-    opacity: 0.7;
 }
 .clear {
     background: transparent;
