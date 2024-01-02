@@ -32,6 +32,38 @@
 
     
     </style>
+    <script>
+
+function validateFields(){
+    const emailValid = isEmailvalid();
+    document.getElementById('recover-password-button').disabled = !emailIvalid;
+
+const password = isPasswordValid();
+document
+
+
+function validateEmail(email){
+        return /\S+@\S+\.\S+/.test(email);
+}
+function isEmailvalid(){
+    const email = document.getelementById("email").value;
+    if (!email){
+        return false;
+    }
+    return validateEmail(email);
+function isPasswordValid() {
+const password = document.getElementById('password').value;
+if (!password) {
+    return false;
+}
+    return true;
+
+}
+
+}
+
+}
+    </script>
 
     <script src="script.js"></script>
 </body>
