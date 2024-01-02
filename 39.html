@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+      <div class="container">
+        <!-- Botão para abrir o PDF -->
+        
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>39- ARRASTE E SOLTE -
+                    Você tem uma assinatura do Microsoft 365 que contém 1.000 dispositivos Windows 11 registrados no Microsoft
+                    Intune.
+                    Você planeja criar e monitorar os resultados de uma política de conformidade usada para validar a versão do BIOS dos
+                    dispositivos.
+                    Quais são as quatro ações que você deve executar em sequência? Para responder, mova as ações apropriadas
+                    da lista de ações para a área de resposta e organize-as na ordem correta.   <br>
+                    <br> <img src="imagem/39a.png" alt="Imagem 39a"><br> <br>
+
+                </b>
+            </p>
+            
+            <label>A <input type="checkbox" name="answer" value="a" >Revise o painel de conformidade
+                para obter resultados. </label>
+            <label>B <input type="checkbox" name="answer" value="b" >Crie e atribua uma política de conformidade
+                que tenha configurações de segurança
+                do sistema configuradas. </label>
+            <label>C <input type="checkbox" name="answer" value="c" >Revise a pasta de trabalho do Conditional
+                Access Insights e Reporting para obter
+                resultados. </label>     
+            <label>D <input type="checkbox" name="answer" value="d" > Crie um script de descoberta do
+                PowerShell e um arquivo JSON.</label>
+            <label>E <input type="checkbox" name="answer" value="e" >Carregue o script do PowerShell
+                no Intune. </label>
+            <label>F <input type="checkbox" name="answer" value="f" >Carregue o arquivo JSON
+                no Azure AD.</label>
+            <label>G <input type="checkbox" name="answer" value="g" >Crie e atribua uma política de
+                conformidade personalizada. </label>     
+                      
+         
+        
+        
+            <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+ <script>
+    // Recupere as estatísticas armazenadas no localStorage
+    var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+    var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    
+    function checkAnswer() {
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        var resultContainer = document.getElementById('resultContainer');
+        var questionContainer = document.getElementById('questionContainer');
+    
+        if (selectedAnswer) {
+            totalQuestions++;
+            if (checkIndividualAnswer(selectedAnswer)) {
+                correctAnswers++;
+                resultContainer.className = 'correct';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: D, E, G e A Respectivamente </p>';
+            } else {
+                incorrectAnswers++;
+                resultContainer.className = 'incorrect';
+                resultContainer.innerHTML = '<p>Você errou. A resposta correta é D, E, G e A Respectivamente .</p>';
+            }
+        } else {
+            alert("Por favor, selecione uma resposta antes de verificar.");
+        }
+        
+        // Atualize as estatísticas no localStorage
+        localStorage.setItem('totalQuestions', totalQuestions);
+        localStorage.setItem('correctAnswers', correctAnswers);
+        localStorage.setItem('incorrectAnswers', incorrectAnswers);
+    }
+    
+    // Função auxiliar para verificar cada resposta individualmente
+    function checkIndividualAnswer(selectedAnswer) {
+        // Adapte a lógica de verificação conforme necessário
+        // Exemplo: Verifica se a resposta selecionada é correta
+        return selectedAnswer.value === 'd' || selectedAnswer.value === 'e' || selectedAnswer.value === 'g' || selectedAnswer.value === 'a';
+    }
+    </script>
+    
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('40.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

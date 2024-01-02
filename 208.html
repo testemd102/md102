@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+      <div class="container">
+        <!-- Botão para abrir o PDF -->
+        
+
+        <div id="questionContainer">
+            <p id="question">
+                <b> 208- PONTO DE ACESSO
+                    Você tem uma assinatura do Microsoft 365.
+                    Você planeja registrar dispositivos no Microsoft Intune que tenham as plataformas e versões mostradas na tabela a
+                    seguir.                             
+                    </b>
+                    <br> <img src="imagem/208a.png" alt="Imagem 208a"><br>                                                    
+                    <br>Você precisa configurar o registro do dispositivo para atender aos seguintes requisitos:
+                    <br> • Certifique-se de que apenas dispositivos com plataformas e versões aprovadas possam se inscrever no Microsoft Intune.
+                    <br> • Certifique-se de que os dispositivos sejam adicionados aos grupos do Azure AD com base em uma seleção feita pelos usuários
+                    <br> durante a inscrição.
+                    <br> Qual configuração de registro de dispositivo você deve definir para cada requisito? Para responder, selecione
+                    <br> as opções apropriadas na área de resposta.
+                    <br> NOTA: Cada seleção correta vale um ponto.
+                    <br> <img src="imagem/208b.png" alt="Imagem 208b"><br>  
+                
+            </p>
+             <b>Certifique-se de que apenas os dispositivos que tenham plataformas e versões aprovadas possam inscrever-se no Microsoft Intune:</b><br> <br>
+            <label>A <input type="checkbox" name="answer" value="a" > Inscrição no Android</label>
+            <label>B <input type="checkbox" name="answer" value="b" > Inscrição na Apple</label>
+            <label>C <input type="checkbox" name="answer" value="c" > Identificadores de dispositivos corporativos</label>
+            <label>D <input type="checkbox" name="answer" value="d" > Categorias de dispositivos</label> 
+            <label>E <input type="checkbox" name="answer" value="e" > Restrições de inscrição</label>
+            <label>F <input type="checkbox" name="answer" value="f" > Registro do Windows</label>
+            <b>Certifique-se de que os dispositivos são adicionados aos grupos AD Azure com base numa seleção feita pelos utilizadores durante a inscrição:</b><br> <br> 
+            <label>G <input type="checkbox" name="answer" value="g" > Inscrição no Android</label>
+            <label>H <input type="checkbox" name="answer" value="h" > Inscrição na Apple</label>
+            <label>I <input type="checkbox" name="answer" value="i" > Identificadores de dispositivos corporativos</label>
+            <label>J <input type="checkbox" name="answer" value="j" > Categorias de dispositivos</label> 
+            <label>K <input type="checkbox" name="answer" value="k" > Restrições de inscrição</label>
+            <label>L <input type="checkbox" name="answer" value="l" > Registro do Windows</label>
+            
+        
+
+
+            <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+ <script>
+    // Recupere as estatísticas armazenadas no localStorage
+    var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+    var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    
+    function checkAnswer() {
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        var resultContainer = document.getElementById('resultContainer');
+        var questionContainer = document.getElementById('questionContainer');
+    
+        if (selectedAnswer) {
+            totalQuestions++;
+            if (checkIndividualAnswer(selectedAnswer)) {
+                correctAnswers++;
+                resultContainer.className = 'correct';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: E e J</p>';
+            } else {
+                incorrectAnswers++;
+                resultContainer.className = 'incorrect';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: E e J</p>';
+            }
+        } else {
+            alert("Por favor, selecione uma resposta antes de verificar.");
+        }
+        
+        // Atualize as estatísticas no localStorage
+        localStorage.setItem('totalQuestions', totalQuestions);
+        localStorage.setItem('correctAnswers', correctAnswers);
+        localStorage.setItem('incorrectAnswers', incorrectAnswers);
+    }
+    
+    // Função auxiliar para verificar cada resposta individualmente
+    function checkIndividualAnswer(selectedAnswer) {
+        // Adapte a lógica de verificação conforme necessário
+        // Exemplo: Verifica se a resposta selecionada é correta
+        return selectedAnswer.value === 'e' || selectedAnswer.value === 'j';
+    }
+    </script>
+    
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('209.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

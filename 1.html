@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+      <div class="container">
+        <!-- Botão para abrir o PDF -->
+        <button id="viewTextButton" onclick="openPDF('imagem/1texto.pdf')">Ver Texto Associado</button>
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>1- (ADAPTADA) Requerimentos técnicos - ADatum deve atender aos seguintes requisitos técnicos:
+        
+                    Os usuários do Grupo A devem poder implantar novos computadores.
+                    O esforço administrativo deve ser minimizado. Para cada uma das afirmações a seguir, selecione até 3 opções que julgar <I><U>CORRETA</U></I>. NOTA: Cada seleção correta vale um ponto.</b>
+            </p>
+            <label>A <input type="checkbox" name="answer" value="a" > O usuário1 pode criar um arquivo chamado D:\Folder1\file1.txt no Dispositivo4 usando o Bloco de Notas.</label>
+            <label>B <input type="checkbox" name="answer" value="b" > User2 pode remover D:\Folder1 da lista de pastas protegidas no Device2.</label>
+            <label>C <input type="checkbox" name="answer" value="c" > User3 pode criar um arquivo chamado C:\Users\User3\Desktop\file1.txt no Device2 executando um script personalizado do Windows PowerShell.</label>
+        
+            <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+<script>
+ // Recupere as estatísticas armazenadas no localStorage
+var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+
+function checkAnswer() {
+    var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    var resultContainer = document.getElementById('resultContainer');
+    var questionContainer = document.getElementById('questionContainer');
+
+    if (selectedAnswer) {
+        totalQuestions++;
+        if (selectedAnswer.value === 'c') {
+            correctAnswers++;
+            resultContainer.className = 'correct';
+            resultContainer.innerHTML = '<p>Você acertou!</p>';
+        } else {
+            incorrectAnswers++;
+            resultContainer.className = 'incorrect';
+            resultContainer.innerHTML = '<p>Você errou. A resposta correta é C.</p>';
+        }
+    } else {
+        alert("Por favor, selecione uma resposta antes de verificar.");
+    }
+    
+    // Atualize as estatísticas no localStorage
+    localStorage.setItem('totalQuestions', totalQuestions);
+    localStorage.setItem('correctAnswers', correctAnswers);
+    localStorage.setItem('incorrectAnswers', incorrectAnswers);
+}
+
+
+// Função auxiliar para verificar cada resposta individualmente
+function checkIndividualAnswer(selectedAnswer) {
+    // Adapte a lógica de verificação conforme necessário
+    // Exemplo: Verifica se a resposta selecionada é correta
+    return selectedAnswer.value === 'b' || selectedAnswer.value === 'b';
+}
+
+
+</script>
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('2.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

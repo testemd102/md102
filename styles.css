@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin-top: auto;
+    
+}
+
+.container {
+    text-align: left;
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+    margin-bottom: auto;
+ 
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove espaço extra abaixo da imagem em alguns navegadores */
+    
+}
+
+
+
+#questionContainer {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#resultContainer {
+    margin-bottom: 20px;
+}
+
+#resultContainer p {
+    margin: 0;
+}
+
+#resultContainer.correct {
+    color: green;
+}
+
+#resultContainer.incorrect {
+    color: red;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+   
+    
+}
+
+#viewTextButton, #nextButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+#viewTextButton:hover, #nextButton:hover {
+    background-color: #45a049;
+}
+
+/* Media Query para tornar a página responsiva em dispositivos com largura até 768 pixels */
+@media only screen and (max-width: 500px) {
+    .container {
+        width: 80%;
+    }
+}

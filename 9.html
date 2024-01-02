@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+    <div class="container">
+        <!-- Botão para abrir o PDF -->
+        
+      
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>9- Você tem uma assinatura do Microsoft 365 que usa o Microsoft Intune Suite
+                    Você usa o Microsoft Intune para gerenciar dispositivos.
+                    Você planeja implantar dois aplicativos chamados App1 e App2 em todos os dispositivos Windows. O App1 deve ser instalado antes do App2.
+                    No centro de administração do Intune, você cria e implanta dois aplicativos do Windows (Win32).
+                    Você precisa garantir que o App1 seja instalado antes do App2 em todos os dispositivos. 
+                    O que você deve configurar?
+    
+                    
+                    </b>
+            </p>
+            <label>A <input type="radio" name="answer" value="a" onclick="disableRadioButtons()"> as configurações de implantação do App1 </label>
+            <label>B <input type="radio" name="answer" value="b" onclick="disableRadioButtons()"> um grupo de dispositivos dinâmicos</label>
+            <label>C <input type="radio" name="answer" value="c" onclick="disableRadioButtons()">  uma regra de detecção</label>
+            <label>D <input type="radio" name="answer" value="d" onclick="disableRadioButtons()">as configurações de implantação do App2</label>
+                      <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+
+
+ <!-- A pergunta termina aqui -->
+<script>
+ // Recupere as estatísticas armazenadas no localStorage
+var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+
+function checkAnswer() {
+    var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    var resultContainer = document.getElementById('resultContainer');
+    var questionContainer = document.getElementById('questionContainer');
+
+    if (selectedAnswer) {
+        totalQuestions++;
+        if (selectedAnswer.value === 'c') {
+            correctAnswers++;
+            resultContainer.className = 'correct';
+            resultContainer.innerHTML = '<p>Você acertou!</p>';
+        } else {
+            incorrectAnswers++;
+            resultContainer.className = 'incorrect';
+            resultContainer.innerHTML = '<p>Você errou. A resposta correta é C.</p>';
+        }
+    } else {
+        alert("Por favor, selecione uma resposta antes de verificar.");
+    }
+    
+    // Atualize as estatísticas no localStorage
+    localStorage.setItem('totalQuestions', totalQuestions);
+    localStorage.setItem('correctAnswers', correctAnswers);
+    localStorage.setItem('incorrectAnswers', incorrectAnswers);
+}
+</script>
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('10.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

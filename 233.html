@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+      <div class="container">
+        <!-- Botão para abrir o PDF -->
+        
+
+        <div id="questionContainer">
+            <p id="question">
+                <b> 233- PONTO DE ACESSO
+                    Você tem uma assinatura do Microsoft 365 que contém os dispositivos mostrados na tabela a seguir.
+                    </b>
+                    <br> <img src="imagem/233a.png" alt="Imagem 233a"><br>   
+                    Todos os dispositivos serão recriados e licenciados por meio da ativação de assinatura.
+                    Os dispositivos são atribuídos aos usuários mostrados na tabela a seguir.
+                    <br> <img src="imagem/233b.png" alt="Imagem 233b"><br>  
+                    Para cada uma das afirmações a seguir, selecione Sim se a afirmação for verdadeira. Caso contrário,
+                    deixe em branco. NOTA: Cada seleção correta vale um ponto. 
+                    <br> <img src="imagem/233c.png" alt="Imagem 233c"><br>                                                
+                                  
+            </p>
+            <br><br><b>Net Grupo Local </b><br><br>
+            <label>A <input type="checkbox" name="answer" value="a" > Device1 pode ser atualizado para Windows 11 e ativado.</label>
+            <label>B <input type="checkbox" name="answer" value="b" > Device2 requer hardware adicional antes de poder ser atualizado para o Windows 11.</label>
+            <label>C <input type="checkbox" name="answer" value="c" > User3 requer uma licença adicional para ativar o Windows 11 no Device3.</label>
+     
+            <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+ <script>
+    // Recupere as estatísticas armazenadas no localStorage
+    var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+    var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    
+    function checkAnswer() {
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        var resultContainer = document.getElementById('resultContainer');
+        var questionContainer = document.getElementById('questionContainer');
+    
+        if (selectedAnswer) {
+            totalQuestions++;
+            if (checkIndividualAnswer(selectedAnswer)) {
+                correctAnswers++;
+                resultContainer.className = 'correct';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C </p>';
+            } else {
+                incorrectAnswers++;
+                resultContainer.className = 'incorrect';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C </p>';
+            }
+        } else {
+            alert("Por favor, selecione uma resposta antes de verificar.");
+        }
+        
+        // Atualize as estatísticas no localStorage
+        localStorage.setItem('totalQuestions', totalQuestions);
+        localStorage.setItem('correctAnswers', correctAnswers);
+        localStorage.setItem('incorrectAnswers', incorrectAnswers);
+    }
+    
+    // Função auxiliar para verificar cada resposta individualmente
+    function checkIndividualAnswer(selectedAnswer) {
+        // Adapte a lógica de verificação conforme necessário
+        // Exemplo: Verifica se a resposta selecionada é correta
+        return selectedAnswer.value === 'c' || selectedAnswer.value === 'c';
+    }
+    </script>
+    
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('234.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+      <div class="container"><br><br><br>
+        <!-- Botão para abrir o PDF -->
+        <button id="viewTextButton" onclick="openPDF('imagem/17texto.pdf')">Ver Texto Associado</button>
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>17- HOTSPOT –
+                    Você tem uma assinatura do Microsoft 365 E5. Você
+                    cria uma nova política de anéis de atualização chamada Policy1, conforme mostrado na exposição a seguir.
+                    Use os menus suspensos para selecionar a opção de resposta que completa cada afirmação com base
+                    nas informações apresentadas no gráfico.
+                    NOTA: Cada seleção correta vale um ponto.
+
+                </b>
+            </p>  <br>
+           <b> Atualizações que contêm correções e melhorias nas funcionalidades
+            existentes do Windows [opção de resposta]</b>
+            
+            <label>A <input type="checkbox" name="answer" value="a" >pode ser adiado indefinidamente</label>
+            <label>B <input type="checkbox" name="answer" value="b" >pode ser adiado por 30 dias</label>
+            <label>C <input type="checkbox" name="answer" value="c" >será instalado imediatamente </label> <br>
+           <b> As atualizações que contêm novas funcionalidades do
+            Windows serão instaladas em [escolha de resposta] do lançamento </b><br>
+            <label>D <input type="checkbox" name="answer" value="d" >1 dia </label>
+            <label>E <input type="checkbox" name="answer" value="e" >30 dias </label>
+            <label>F <input type="checkbox" name="answer" value="f" >60 dias </label>
+            
+
+        
+            <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+ <script>
+    // Recupere as estatísticas armazenadas no localStorage
+    var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+    var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    
+    function checkAnswer() {
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        var resultContainer = document.getElementById('resultContainer');
+        var questionContainer = document.getElementById('questionContainer');
+    
+        if (selectedAnswer) {
+            totalQuestions++;
+            if (checkIndividualAnswer(selectedAnswer)) {
+                correctAnswers++;
+                resultContainer.className = 'correct';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C e E</p>';
+            } else {
+                incorrectAnswers++;
+                resultContainer.className = 'incorrect';
+                resultContainer.innerHTML = '<p>Você errou. A resposta correta é C e E.</p>';
+            }
+        } else {
+            alert("Por favor, selecione uma resposta antes de verificar.");
+        }
+        
+        // Atualize as estatísticas no localStorage
+        localStorage.setItem('totalQuestions', totalQuestions);
+        localStorage.setItem('correctAnswers', correctAnswers);
+        localStorage.setItem('incorrectAnswers', incorrectAnswers);
+    }
+    
+    // Função auxiliar para verificar cada resposta individualmente
+    function checkIndividualAnswer(selectedAnswer) {
+        // Adapte a lógica de verificação conforme necessário
+        // Exemplo: Verifica se a resposta selecionada é correta
+        return selectedAnswer.value === 'c' || selectedAnswer.value === 'e';
+    }
+    </script>
+    
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('18.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

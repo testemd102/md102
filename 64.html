@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+    <div class="container">
+        <!-- Botão para abrir o PDF -->
+      
+    
+      
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>64- Estudo de caso -
+                    Visão geral -
+                    A Contoso, Ltd. é uma empresa de consultoria com sede em Montreal e duas filiais em Seattle
+                    e Nova York.
+                    A Contoso tem os usuários e computadores mostrados na tabela a seguir.
+                    <br> <img src="imagem/62a.png" alt="Imagem 62a"><br>
+                    A empresa possui departamentos de TI, recursos humanos (RH), jurídico (LEG), marketing (MKG) e finanças (FIN).
+                    A Contoso adquiriu recentemente uma assinatura do Microsoft 365.
+                    A empresa está abrindo uma nova filial em Phoenix. A maioria dos usuários do escritório de Phoenix trabalhará
+                    em casa.
+                    Ambiente Existente -
+                    A rede contém um domínio do Active Directory denominado contoso.com que é sincronizado com o Azure AD.
+                    Todos os servidores membros executam o Windows Server 2016. Todos os laptops e desktops executam o Windows
+                    10 Enterprise.
+                    Os computadores são gerenciados usando o Microsoft Configuration Manager. Os dispositivos móveis são gerenciados
+                    usando o Microsoft Intune.
+                    A convenção de nomenclatura para os computadores é a sigla do departamento, seguida por um hífen e depois
+                    quatro números, por exemplo FIN-6785. Todos os computadores estão associados ao domínio local do Active
+                    Directory.
+                    Cada departamento tem uma unidade organizacional (OU) que contém uma OU filha chamada Computadores. Cada
+                    conta de computador está na UO Computadores de seu respectivo departamento.
+                    Configuração do Intune
+                    O domínio possui os usuários mostrados na tabela a seguir.
+                    <br> <img src="imagem/62b.png" alt="Imagem 62b"><br>
+                    User2 é um DEM (gerenciador de registro de dispositivos) no Intune.
+                    Os dispositivos inscritos no Intune são mostrados na tabela a seguir.
+                    <br> <img src="imagem/62c.png" alt="Imagem 62c"><br>
+                    As políticas de conformidade do dispositivo no Intune são configuradas conforme mostrado na tabela a seguir.
+                    <br> <img src="imagem/62d.png" alt="Imagem 62d"><br>
+                    As políticas de conformidade do dispositivo têm as atribuições mostradas na tabela a seguir.
+                    <br> <img src="imagem/62e.png" alt="Imagem 62e"><br>
+                    As restrições de limite de dispositivo no Intune são configuradas conforme mostrado na tabela a seguir.
+                    <br> <img src="imagem/62f.png" alt="Imagem 62f"><br>
+                    Requisitos -
+                    Mudanças planejadas -
+                    A Contoso planeja implementar as seguintes alterações:
+                    • Fornecer novos computadores aos usuários do escritório Phoenix. Os novos computadores possuem o Windows
+                    10 Pro pré-instalado e já foram adquiridos.
+                    • Implementar o co-gerenciamento dos computadores.
+                    Requerimentos técnicos -
+                    A Contoso deve atender aos seguintes requisitos técnicos:
+                    • Certifique-se de que os usuários de um grupo chamado Grupo4 só possam acessar o Microsoft Exchange Online a partir de
+                    dispositivos inscritos no Intune.
+                    • Implante o Windows 10 Enterprise nos computadores dos usuários do escritório Phoenix usando o Windows Autopilot.
+                    • Crie um pacote de provisionamento para novos computadores no departamento de RH.
+                    • Impedir que dispositivos iOS enviem dados de diagnóstico e telemetria de uso.
+                    • Use o princípio do menor privilégio sempre que possível.
+                    • Permitir que os usuários do departamento MKG usem o App1.
+                    • Co-gestão piloto para o departamento de TI.
+                    Você precisa atender aos requisitos técnicos dos dispositivos iOS.
+                    Qual objeto você deve criar no Intune?                 
+                    </b>
+            </p>
+            <br><br>Você precisa se preparar para a implantação dos computadores de escritório Phoenix.
+                    O que você deve fazer primeiro? <br><br>
+            <label>A <input type="radio" name="answer" value="a" onclick="disableRadioButtons()"> Generalize os computadores e defina as configurações do dispositivo no centro de administração do Microsoft Entra. </label>
+            <label>B <input type="radio" name="answer" value="b" onclick="disableRadioButtons()"> Extraia o número de série de cada computador para um arquivo XML e carregue o arquivo do centro de administração
+                do Microsoft Intune.</label>
+            <label>C <input type="radio" name="answer" value="c" onclick="disableRadioButtons()"> Extraia as informações de ID de hardware de cada computador para um arquivo CSV e carregue o arquivo do centro
+                de administração do Microsoft Intune.</label>
+            <label>D <input type="radio" name="answer" value="d" onclick="disableRadioButtons()"> Generalize os computadores e defina as configurações de mobilidade (MDM e MAM) no centro de administração
+                do Microsoft Entra.</label>
+                <label>E <input type="radio" name="answer" value="e" onclick="disableRadioButtons()"> Extraia as informações do número de série de cada computador para um arquivo CSV e carregue o arquivo do centro
+                    de administração do Microsoft Intune.</label>
+
+          
+                      <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+
+
+ <!-- A pergunta termina aqui -->
+<script>
+ // Recupere as estatísticas armazenadas no localStorage
+var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+
+function checkAnswer() {
+    var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    var resultContainer = document.getElementById('resultContainer');
+    var questionContainer = document.getElementById('questionContainer');
+
+    if (selectedAnswer) {
+        totalQuestions++;
+        if (selectedAnswer.value === 'c') {
+            correctAnswers++;
+            resultContainer.className = 'correct';
+            resultContainer.innerHTML = '<p>Você acertou!</p>';
+        } else {
+            incorrectAnswers++;
+            resultContainer.className = 'incorrect';
+            resultContainer.innerHTML = '<p>Você errou. A resposta correta é C.</p>';
+        }
+    } else {
+        alert("Por favor, selecione uma resposta antes de verificar.");
+    }
+    
+    // Atualize as estatísticas no localStorage
+    localStorage.setItem('totalQuestions', totalQuestions);
+    localStorage.setItem('correctAnswers', correctAnswers);
+    localStorage.setItem('incorrectAnswers', incorrectAnswers);
+}
+</script>
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('65.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

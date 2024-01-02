@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+      <div class="container">
+        <!-- Botão para abrir o PDF -->
+        
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>171- PONTO DE ACESSO
+                   <br> Sua rede contém um domínio local dos Serviços de Domínio do Active Directory (AD DS) que sincroniza com um
+                   <br>  locatário do Azure AD.
+                   <br> Você tem uma assinatura do Microsoft 365.
+                   <br>  Você planeja usar o Windows Autopilot para implantar novos dispositivos Windows.
+                   <br> Você planeja criar um perfil de implantação.
+                   <br> Você precisa garantir que a implantação atenda aos seguintes requisitos:
+                   <br>  • Os dispositivos devem ser associados ao AD DS, independentemente do seu local de trabalho atual.
+                   <br>  • Os usuários do departamento de marketing devem ter um aplicativo de linha de negócios (LOB) instalado durante
+                   <br>  a implantação.
+                   <br> A solução deve minimizar o esforço administrativo.
+                   <br> O que você deve fazer para cada requisito? Para responder, selecione as opções apropriadas na área de resposta.
+                   <br>  NOTA: Cada seleção correta vale um ponto.</b>
+                    <br> <img src="imagem/171a.png" alt="Imagem 171a"><br>   
+                
+            </p>
+             
+          <br><br>Os dispositivos devem ser associados ao AD DS,
+          independentemente do local de trabalho atual: <br><br>
+            <label>A <input type="checkbox" name="answer" value="a" > Implante a VPN Always On.</label>
+            <label>B <input type="checkbox" name="answer" value="b" > Instale o conector do Intune para Active Directory.</label>
+            <label>C <input type="checkbox" name="answer" value="c" > Modifique o perfil de implantação do Autopilot.</label> 
+            <label>D <input type="checkbox" name="answer" value="d" > Edite as configurações de cogerenciamento no Intune.</label> 
+            <br><br>Os usuários do departamento de marketing devem
+            ter um aplicativo LOB instalado durante a implantação: <br><br>
+           
+            <label>E <input type="checkbox" name="answer" value="e" > Modifique o perfil de implantação do Autopilot.</label>           
+            <label>F <input type="checkbox" name="answer" value="f" > Crie uma implantação de aplicativo do Microsoft Intune.</label>
+            <label>G <input type="checkbox" name="answer" value="g" > Crie um perfil de configuração de dispositivo no Intune.</label>
+                       <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+ <script>
+    // Recupere as estatísticas armazenadas no localStorage
+    var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+    var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    
+    function checkAnswer() {
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        var resultContainer = document.getElementById('resultContainer');
+        var questionContainer = document.getElementById('questionContainer');
+    
+        if (selectedAnswer) {
+            totalQuestions++;
+            if (checkIndividualAnswer(selectedAnswer)) {
+                correctAnswers++;
+                resultContainer.className = 'correct';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: A e F</p>';
+            } else {
+                incorrectAnswers++;
+                resultContainer.className = 'incorrect';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: A e F</p>';
+            }
+        } else {
+            alert("Por favor, selecione uma resposta antes de verificar.");
+        }
+        
+        // Atualize as estatísticas no localStorage
+        localStorage.setItem('totalQuestions', totalQuestions);
+        localStorage.setItem('correctAnswers', correctAnswers);
+        localStorage.setItem('incorrectAnswers', incorrectAnswers);
+    }
+    
+    // Função auxiliar para verificar cada resposta individualmente
+    function checkIndividualAnswer(selectedAnswer) {
+        // Adapte a lógica de verificação conforme necessário
+        // Exemplo: Verifica se a resposta selecionada é correta
+        return selectedAnswer.value === 'a' || selectedAnswer.value === 'f';
+    }
+    </script>
+    
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('172.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

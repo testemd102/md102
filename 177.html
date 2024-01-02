@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+      <div class="container">
+        <!-- Botão para abrir o PDF -->
+        
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>177- PONTO DE ACESSO
+                 <br>   Você tem uma assinatura do Microsoft 365 que contém dois grupos de segurança chamados Grupo1 e Grupo2.
+                 <br> O Microsoft 365 usa o Microsoft Intune Suite.
+                 <br> Você usa o Microsoft Intune para gerenciar dispositivos.
+                 <br>  Você precisa atribuir funções no Intune para atender aos seguintes requisitos:
+                 <br>  • Os membros do Grupo1 devem gerenciar funções e atribuições do Intune.
+                 <br>  • Os membros do Grupo2 devem atribuir aplicativos e políticas existentes a usuários e dispositivos.
+                 <br>  A solução deve seguir o princípio do menor privilégio.
+                 <br>  Que função você deve atribuir a cada grupo? Para responder, selecione as opções apropriadas na área de resposta.
+                 <br>  NOTA: Cada seleção correta vale um ponto.</b>  
+                    <br> <img src="imagem/177a.png" alt="Imagem 177a"><br> 
+        
+                
+            </p>
+             
+          <br><br>Grupo1: <br><br>
+            <label>A <input type="checkbox" name="answer" value="a" > Operador de Help Desk</label>
+            <label>B <input type="checkbox" name="answer" value="b" > Administrador de função do Intune</label>
+            <label>C <input type="checkbox" name="answer" value="c" > Administrador de serviço do Intune</label> 
+            <label>D <input type="checkbox" name="answer" value="d" > Gerenciador de políticas e perfis</label> 
+            <br><br>Grupo2: <br><br>
+            <label>E <input type="checkbox" name="answer" value="e" > Operador de Help Desk</label>
+            <label>F <input type="checkbox" name="answer" value="f" > Administrador de função do Intune</label>
+            <label>G <input type="checkbox" name="answer" value="g" > Administrador de serviço do Intune</label> 
+            <label>H <input type="checkbox" name="answer" value="h" > Gerenciador de políticas e perfis</label> 
+
+
+                       <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+        
+        
+
+
+ <!-- A pergunta termina aqui -->
+
+ <script>
+    // Recupere as estatísticas armazenadas no localStorage
+    var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+    var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    
+    function checkAnswer() {
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        var resultContainer = document.getElementById('resultContainer');
+        var questionContainer = document.getElementById('questionContainer');
+    
+        if (selectedAnswer) {
+            totalQuestions++;
+            if (checkIndividualAnswer(selectedAnswer)) {
+                correctAnswers++;
+                resultContainer.className = 'correct';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C e E</p>';
+            } else {
+                incorrectAnswers++;
+                resultContainer.className = 'incorrect';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C e E</p>';
+            }
+        } else {
+            alert("Por favor, selecione uma resposta antes de verificar.");
+        }
+        
+        // Atualize as estatísticas no localStorage
+        localStorage.setItem('totalQuestions', totalQuestions);
+        localStorage.setItem('correctAnswers', correctAnswers);
+        localStorage.setItem('incorrectAnswers', incorrectAnswers);
+    }
+    
+    // Função auxiliar para verificar cada resposta individualmente
+    function checkIndividualAnswer(selectedAnswer) {
+        // Adapte a lógica de verificação conforme necessário
+        // Exemplo: Verifica se a resposta selecionada é correta
+        return selectedAnswer.value === 'c' || selectedAnswer.value === 'e';
+    }
+    </script>
+    
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('178.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

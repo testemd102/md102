@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Enquete</title>
+</head>
+<body>
+ <!-- A pergunta começa aqui -->
+
+
+    <div class="container">
+        <!-- Botão para abrir o PDF -->
+       
+
+        <div id="questionContainer">
+            <p id="question">
+                <b>11- Você tem uma assinatura do Microsoft 365 E5 que contém 100 dispositivos iOS registrados no Microsoft Intune. Você
+                    precisa implantar um aplicativo LOB (linha de negócios) personalizado nos dispositivos usando o Intune. Qual
+                    extensão você deve selecionar para o arquivo do pacote do aplicativo?              
+                    
+                    </b>
+            </p>
+            <label>A <input type="radio" name="answer" value="a" onclick="disableRadioButtons()"> .intunemac </label>
+            <label>B <input type="radio" name="answer" value="b" onclick="disableRadioButtons()"> .ipa</label>
+            <label>C <input type="radio" name="answer" value="c" onclick="disableRadioButtons()"> .apk</label>
+            <label>D <input type="radio" name="answer" value="d" onclick="disableRadioButtons()"> .appx</label>
+                      <button onclick="checkAnswer()">Verificar Resposta</button>
+        </div>
+
+
+ <!-- A pergunta termina aqui -->
+<script>
+ // Recupere as estatísticas armazenadas no localStorage
+var totalQuestions = parseInt(localStorage.getItem('totalQuestions')) || 0;
+var correctAnswers = parseInt(localStorage.getItem('correctAnswers')) || 0;
+var incorrectAnswers = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+
+function checkAnswer() {
+    var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    var resultContainer = document.getElementById('resultContainer');
+    var questionContainer = document.getElementById('questionContainer');
+
+    if (selectedAnswer) {
+        totalQuestions++;
+        if (selectedAnswer.value === 'b') {
+            correctAnswers++;
+            resultContainer.className = 'correct';
+            resultContainer.innerHTML = '<p>Você acertou!</p>';
+        } else {
+            incorrectAnswers++;
+            resultContainer.className = 'incorrect';
+            resultContainer.innerHTML = '<p>Você errou. A resposta correta é B.</p>';
+        }
+    } else {
+        alert("Por favor, selecione uma resposta antes de verificar.");
+    }
+    
+    // Atualize as estatísticas no localStorage
+    localStorage.setItem('totalQuestions', totalQuestions);
+    localStorage.setItem('correctAnswers', correctAnswers);
+    localStorage.setItem('incorrectAnswers', incorrectAnswers);
+}
+</script>
+ 
+        <div id="resultContainer"></div>
+
+        <!-- Botão para a próxima pergunta -->
+        <button id="nextButton" onclick="nextQuestion('12.html')">Próxima Pergunta</button>
+
+        <!-- Contêiner para exibir o PDF -->
+        <div id="pdfContainer" style="display: none;">
+            <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
+            <button onclick="closePDF()">Fechar PDF</button>
+        </div>
+
+        <!-- Botão para finalizar o teste -->
+        <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
+
+
+        <!-- Exibição de estatísticas -->
+        <div id="statisticsContainer" style="display: none; clear: both;">
+           <h2>Estatísticas do Teste</h2>
+            <p>Total de Perguntas: <span id="totalQuestions">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Porcentagem de Acertos: <span id="percentage">0%</span></p>
+        
+        </div>
+          <!-- Botão para reiniciar o teste -->
+        
+          <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
