@@ -176,3 +176,7 @@ form { /* cor da caixa*/
     font-weight: bold; 
     margin-bottom: 50px;
 } 
+
+b {
+    line-height: 1.5;
+}
