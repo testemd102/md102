@@ -59,11 +59,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B, F e C.</p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B, F e C. Respectivamente. </p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B, F e C.</p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B, F e C. Respectivamente .</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
