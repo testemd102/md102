@@ -34,12 +34,19 @@
                                    
                     </b>
             </p>
-             <b>Marque respectivamente e somente a resposta que julgar <u>correta:</u> Podendo haver uma ou mais respostas para as proposições apresentadas. </b><br> <br>
+             <b>Marque respectivamente e somente a resposta que julgar <u>correta:</u>  </b><br> <br>
+             <b>DEP</b><br><br>
 
             <label>A <input type="checkbox" name="answer" value="a" > Proteção de conta</label>
             <label>B <input type="checkbox" name="answer" value="b" > Controle de aplicativos e navegadores</label>
             <label>C <input type="checkbox" name="answer" value="c" > Segurança do dispositivo</label> 
-            <label>D <input type="checkbox" name="answer" value="d" > Proteção contra vírus e ameaças</label>            
+            <label>D <input type="checkbox" name="answer" value="d" > Proteção contra vírus e ameaças</label>  
+            <br><b>ASLR Obrigatório</b><br><br>
+            <label>E <input type="checkbox" name="answer" value="e" > Proteção de conta</label>
+            <label>F <input type="checkbox" name="answer" value="f" > Controle de aplicativos e navegadores</label>
+            <label>G <input type="checkbox" name="answer" value="g" > Segurança do dispositivo</label> 
+            <label>H <input type="checkbox" name="answer" value="h" > Proteção contra vírus e ameaças</label>
+
             <button onclick="checkAnswer()">Verificar Resposta</button>
         </div>
         
@@ -64,11 +71,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B e B </p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B e F Respectivamente</p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B e B </p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B e F Respectivamente </p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -84,7 +91,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'b' || selectedAnswer.value === 'b';
+        return selectedAnswer.value === 'b' || selectedAnswer.value === 'f';
     }
     </script>
     
