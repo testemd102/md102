@@ -33,11 +33,16 @@
                     </b>
             </p>
              <b>Marque somente a resposta que julgar <u>correta:</u>   </b><br> <br>
-
+            <br><b>usuário 1</b><br><br>
             <label>A <input type="checkbox" name="answer" value="a" > Administrador Global</label>
             <label>B <input type="checkbox" name="answer" value="b" > Administrador de suporte técnico</label>
             <label>C <input type="checkbox" name="answer" value="c" > Administrador de segurança</label> 
-            <label>D <input type="checkbox" name="answer" value="d" > Administrador de usuário</label>            
+            <label>D <input type="checkbox" name="answer" value="d" > Administrador de usuário</label>   
+            <br><b>usuário 2</b><br><br>
+            <label>E <input type="checkbox" name="answer" value="e" > Administrador Global</label>
+            <label>F <input type="checkbox" name="answer" value="f" > Administrador de suporte técnico</label>
+            <label>G <input type="checkbox" name="answer" value="g" > Administrador de segurança</label> 
+            <label>H <input type="checkbox" name="answer" value="h" > Administrador de usuário</label>         
             <button onclick="checkAnswer()">Verificar Resposta</button>
         </div>
         
@@ -62,11 +67,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: D e B </p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: D e F Respectivamente</p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: D e B </p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: D e F Respectivamente</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -82,7 +87,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'd' || selectedAnswer.value === 'b';
+        return selectedAnswer.value === 'd' || selectedAnswer.value === 'f';
     }
     </script>
     
