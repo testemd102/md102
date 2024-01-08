@@ -17,12 +17,12 @@
         <div id="questionContainer">
             <p id="question">
                 <b><b> 148- PONTO DE ACESSO
-                  <br>  Você tem uma assinatura do Microsoft 365 que contém 1.000 dispositivos iOS. Os dispositivos são registrados no
-                  <br> Microsoft Intune da seguinte forma:
+                  <br>  Você tem uma assinatura do Microsoft 365 que contém 1.000 dispositivos iOS. 
+                  <br>Os dispositivos são registrados no Microsoft Intune da seguinte forma:
                   <br>   • Duzentos dispositivos são registrados usando o Portal da Empresa do Intune.
                   <br>   • Oitocentos dispositivos são registrados usando o Apple Automated Device Enrollment (ADE).
                   <br>   Você cria uma política de atualizações de software iOS/iPadOS chamada Policy1 que está configurada para instalar o iOS/iPadOS
-                  <br>   15.5.
+                    15.5.
                   <br>  Quantos dispositivos iOS a Política1 atualizará e o que você deve configurar para garantir que apenas o iOS/iPadOS
                   <br>   15.5 seja instalado? Para responder, selecione as opções apropriadas na área de resposta.
                   <br>  NOTA: Cada seleção correta vale um ponto.
@@ -66,11 +66,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B e E</p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B e F</p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B e E</p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B e F</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -86,7 +86,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'b' || selectedAnswer.value === 'e';
+        return selectedAnswer.value === 'b' || selectedAnswer.value === 'f';
     }
     </script>
     
