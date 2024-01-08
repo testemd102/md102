@@ -62,40 +62,40 @@
                      <br>Configuração do piloto automático do Windows -
                      <br> ADatum tem um perfil de implantação do Windows Autopilot configurado conforme mostrado na exposição a seguir.
                      <br> <img src="imagem/1g.png" alt="Imagem 1g"><br>
-                     <br>Currently, there are no devices deployed by using Windows Autopilot.
-                     <br>The Intune connector for Active Directory is installed on Server1.
-                     <br> Requirements -
-                     <br>Planned Changes -
-                     <br> ADatum plans to implement the following changes:
-                     <br> Purchase a new Windows 10 device named Device6 and enroll the device in Intune
-                     <br>New computers will be deployed by using Windows Autopilot and will be hybrid Azure AD joined.
-                     <br> Deployed a network boundary configuration profile that will have the following settings:
-                     <br> Name: Boundary1 -
-                     <br> Network boundary: 192.168.1.0/24
+                     <br>Atualmente, não há dispositivos implantados usando o Windows Autopilot.
+                      <br>O conector do Intune para Active Directory está instalado no Server1.
+                      <br> Requisitos -
+                      <br>Mudanças planejadas -
+                      <br> ADatum planeja implementar as seguintes mudanças:
+                      <br> Compre um novo dispositivo Windows 10 chamado Device6 e registre o dispositivo no Intune
+                      <br>Novos computadores serão implantados usando o Windows Autopilot e serão associados ao Azure AD híbrido.
+                      <br> Implantado um perfil de configuração de limite de rede que terá as seguintes configurações:
+                      <br> Nome: Limite1 -
+                      <br> Limite da rede: 192.168.1.0/24
                      
-                     <br><br>  Scope tags: Tag1 -
-                     <br> Assignments:
-                     <br> Included groups: Group1, Group2 -
-                     <br> Deploy two VPN configuration profiles named Connection1 and Connection2 that will have the following
-                     <br> settings:
-                     <br> Name: Connection1 -
-                     <br> Connection name: VPN1 -
-                     <br> Connection type: L2TP -
-                     <br>Assignments:
-                     <br> Included groups: Group1, Group2, GroupA
-                     <br> Excluded groups: --
-                     <br> Name: Connection2 -
-                     <br> Connection name: VPN2 -
-                     <br>Connection type: IKEv2 -
-                     <br> Assignments:
-                     <br>Included groups: GroupA -
-                     <br> Excluded groups: GroupB -
-                     <br> Technical Requirements -
-                     <br> ADatum must meet the following technical requirements:
-                     <br> Users in GroupA must be able to deploy new computers.
-                     <br> Administrative effort must be minimized.
-                     <br> You implement Boundary1 based on the planned changes.
-                     <br>Which devices have a network boundary of 192.168.1.0/24 applied?
+                      <br><br> Tags de escopo: Tag1 -
+                      <br> Atribuições:
+                      <br> Grupos incluídos: Grupo1, Grupo2 -
+                      <br> Implante dois perfis de configuração VPN chamados Connection1 e Connection2 que terão o seguinte
+                      <br> configurações:
+                      <br> Nome: Conexão1 -
+                      <br> Nome da conexão: VPN1 -
+                      <br> Tipo de conexão: L2TP -
+                      <br>Atribuições:
+                      <br> Grupos incluídos: Grupo1, Grupo2, GrupoA
+                      <br> Grupos excluídos: --
+                      <br> Nome: Conexão2 -
+                      <br> Nome da conexão: VPN2 -
+                      <br>Tipo de conexão: IKEv2 -
+                      <br> Atribuições:
+                      <br>Grupos incluídos: GrupoA -
+                      <br> Grupos excluídos: GrupoB -
+                      <br> Requisitos Técnicos -
+                      <br> O ADatum deve atender aos seguintes requisitos técnicos:
+                      <br> Os usuários do Grupo A devem ser capazes de implantar novos computadores.
+                      <br> O esforço administrativo deve ser minimizado.
+                      <br> Você implementa Boundary1 com base nas mudanças planejadas.
+                      <br>Quais dispositivos têm um limite de rede 192.168.1.0/24 aplicado?
 
                     </b>
             </p>
