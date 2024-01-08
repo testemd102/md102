@@ -32,12 +32,24 @@
                                
                     </b>
             </p>
-             <b>Marque somente a resposta que julgar <u>correta:</u>   </b><br> <br>
+             <b>Os computadores que executam o macOS devem ter o FileVault ativado.</b><br> <br>
 
             <label>A <input type="checkbox" name="answer" value="a" > Proteção de conta</label>
             <label>B <input type="checkbox" name="answer" value="b" > Redução da superfície de ataque (ASR)</label>
             <label>C <input type="checkbox" name="answer" value="c" > Criptografia de disco</label> 
             <label>D <input type="checkbox" name="answer" value="d" > Detecção e resposta de endpoint (EDR)</label> 
+            <b>Os computadores que executam o Windows 10 devem ter o Microsoft Defender Credential Guard habilitado.</b><br> <br>
+
+            <label>E <input type="checkbox" name="answer" value="e" > Proteção de conta</label>
+            <label>F <input type="checkbox" name="answer" value="f" > Redução da superfície de ataque (ASR)</label>
+            <label>G <input type="checkbox" name="answer" value="g" > Criptografia de disco</label> 
+            <label>H <input type="checkbox" name="answer" value="h" > Detecção e resposta de endpoint (EDR)</label> 
+            <b>Os computadores que executam o Windows 10 devem ter o Controle de Aplicativos do Microsoft Defender habilitado.</b><br> <br>
+
+            <label>I <input type="checkbox" name="answer" value="i" > Proteção de conta</label>
+            <label>J <input type="checkbox" name="answer" value="j" > Redução da superfície de ataque (ASR)</label>
+            <label>K <input type="checkbox" name="answer" value="k" > Criptografia de disco</label> 
+            <label>L <input type="checkbox" name="answer" value="l" > Detecção e resposta de endpoint (EDR)</label> 
             
             <button onclick="checkAnswer()">Verificar Resposta</button>
         </div>
@@ -63,11 +75,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C, B e A</p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C, F e I</p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C, B e A</p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C, F e I</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -83,7 +95,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'c' || selectedAnswer.value === 'b' || selectedAnswer.value === 'a';
+        return selectedAnswer.value === 'c' || selectedAnswer.value === 'f' || selectedAnswer.value === 'i';
     }
     </script>
     
