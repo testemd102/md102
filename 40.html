@@ -30,12 +30,18 @@
 
                 </b>
             </p>
-            
+            <br><br><b>Usuario 1</b><br><br>
             <label>A <input type="checkbox" name="answer" value="a" > Administradores</label>
             <label>B <input type="checkbox" name="answer" value="b" > Leitores de log de eventos</label>
             <label>C <input type="checkbox" name="answer" value="c" > Usuários de registro de desempenho</label>     
             <label>D <input type="checkbox" name="answer" value="d" > Usuários avançados</label>
             <label>E <input type="checkbox" name="answer" value="e" > Grupo de contas gerenciadas pelo sistema</label>
+            <br><br><b>Usuario 2</b><br><br>
+            <label>F <input type="checkbox" name="answer" value="f" > Administradores</label>
+            <label>G <input type="checkbox" name="answer" value="g" > Leitores de log de eventos</label>
+            <label>H <input type="checkbox" name="answer" value="h" > Usuários de registro de desempenho</label>     
+            <label>I <input type="checkbox" name="answer" value="i" > Usuários avançados</label>
+            <label>J <input type="checkbox" name="answer" value="j" > Grupo de contas gerenciadas pelo sistema</label>
 
             <button onclick="checkAnswer()">Verificar Resposta</button>
         </div>
@@ -61,11 +67,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: D e C Respectivamente </p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: D e H Respectivamente </p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A resposta correta é D e C Respectivamente .</p>';
+                resultContainer.innerHTML = '<p>Você errou. A resposta correta é D e H Respectivamente .</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -81,7 +87,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'd' || selectedAnswer.value === 'c';
+        return selectedAnswer.value === 'd' || selectedAnswer.value === 'h';
     }
     </script>
     
