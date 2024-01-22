@@ -81,7 +81,12 @@ function checkAnswer() {
             <iframe id="pdfIframe" src="" width="100%" height="600px" frameborder="0"></iframe>
             <button onclick="closePDF()">Fechar PDF</button>
         </div>
+<!-- Caixa de Texto para Digitar o Número da Questão -->
+<label for="questaoInput"></label>
+<input type="text" id="questaoInput" placeholder="Digite o número da questão">
 
+<!-- Botão para Redirecionar -->
+<button onclick="redirecionarPorNumero()">Ir para Questão</button>
         <!-- Botão para finalizar o teste -->
         <button id="finishButton" onclick="confirmFinish()" style="float: right;">Finalizar Teste</button>
 
