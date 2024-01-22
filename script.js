@@ -90,3 +90,20 @@ function restartTest() {
     window.location.href = '001.html';
 }
 
+
+    function redirecionarPorNumero() {
+        // Obter o valor digitado na caixa de texto
+        var numeroQuestao = document.getElementById('questaoInput').value;
+
+        // Verificar se o valor é um número positivo
+        if (/^\d+$/.test(numeroQuestao)) {
+            // Construir o nome do arquivo HTML com base no número da questão
+            var nomeArquivo = numeroQuestao + '.html';
+
+            // Redirecionar para a página correspondente
+            window.location.href = nomeArquivo;
+        } else {
+            // Exibir uma mensagem de erro se o valor não for um número
+            alert('Por favor, digite um número válido para a questão.');
+        }
+    }
