@@ -18,24 +18,20 @@
 
         <div id="questionContainer">
             <p id="question">
-                <b> 237- Sua rede contém um domínio do Active Directory chamado contoso.com. <br>O domínio contém 25 computadores
-                    que executam o Windows 11.
-                    <br>Você tem uma assinatura do Microsoft 365
-                    <br>Você tem um locatário do Azure AD que sincroniza com contoso.com.
-                    <br>Você configura o ingresso híbrido no Azure AD e descobre que alguns dos computadores têm um estado registrado de
-                    Pendente.
-                    <br>Você precisa garantir que os computadores concluam a associação com êxito.
-                    <br>O que você deve garantir?
+                <b> 238- Você tem dispositivos registrados no Microsoft Intune conforme mostrado na tabela a seguir.
+                    <br> <img src="imagem/238a.png" alt="Imagem 238a"><br>  
+                    Para quais dispositivos você pode gerenciar atualizações usando o Intune?
+
                 </b>
                    
                                       
             </p>
            
-            <label>A <input type="radio" name="answer" value="a" onclick="disableRadioButtons()"> que o Windows esteja ativado em todos os computadores</label>
-            <label>B <input type="radio" name="answer" value="b" onclick="disableRadioButtons()"> que os usuários dos computadores recebam licenças do Microsoft 365</label>
-            <label>C <input type="radio" name="answer" value="c" onclick="disableRadioButtons()"> que cada computador tenha uma linha de visão para um controlador de domínio</label>
-            <label>D <input type="radio" name="answer" value="d" onclick="disableRadioButtons()"> que os computadores contenham as atualizações de qualidade mais recentes</label>
-
+            <label>A <input type="radio" name="answer" value="a" onclick="disableRadioButtons()"> Somente dispositivo1</label>
+            <label>B <input type="radio" name="answer" value="b" onclick="disableRadioButtons()"> Somente Dispositivo1 e Dispositivo2</label>
+            <label>C <input type="radio" name="answer" value="c" onclick="disableRadioButtons()"> Somente Dispositivo1 e Dispositivo3</label>
+            <label>D <input type="radio" name="answer" value="d" onclick="disableRadioButtons()"> Somente Dispositivo1, Dispositivo3 e Dispositivo4</label>
+            <label>E <input type="radio" name="answer" value="e" onclick="disableRadioButtons()"> Dispositivo1, Dispositivo2, Dispositivo3 e Dispositivo4</label>
                       <button onclick="checkAnswer()">Verificar Resposta</button>
         </div>
 
@@ -54,14 +50,14 @@ function checkAnswer() {
 
     if (selectedAnswer) {
         totalQuestions++;
-        if (selectedAnswer.value === 'c') {
+        if (selectedAnswer.value === 'd') {
             correctAnswers++;
             resultContainer.className = 'correct';
             resultContainer.innerHTML = '<p>Você acertou!</p>';
         } else {
             incorrectAnswers++;
             resultContainer.className = 'incorrect';
-            resultContainer.innerHTML = '<p>Você errou. A resposta correta é C.</p>';
+            resultContainer.innerHTML = '<p>Você errou. A resposta correta é D.</p>';
         }
     } else {
         alert("Por favor, selecione uma resposta antes de verificar.");
@@ -77,7 +73,7 @@ function checkAnswer() {
         <div id="resultContainer"></div>
 
         <!-- Botão para a próxima pergunta -->
-        <button id="nextButton" onclick="nextQuestion('238.html')">Próxima Pergunta</button>
+        <button id="nextButton" onclick="nextQuestion('239.html')">Próxima Pergunta</button>
 
         <!-- Contêiner para exibir o PDF -->
         <div id="pdfContainer" style="display: none;">
