@@ -68,11 +68,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C e F</p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: D, A e B</p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C e F</p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: D, A e B</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -88,7 +88,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'c' || selectedAnswer.value === 'f';
+        return selectedAnswer.value === 'd' || selectedAnswer.value === 'a' || selectedAnswer.value === 'b';
     }
     </script>
     
