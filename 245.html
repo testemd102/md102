@@ -16,26 +16,22 @@
 
         <div id="questionContainer">
             <p id="question">
-                <b> 244- PONTO DE ACESSO
+                <b> 245- PONTO DE ACESSO
                     Você tem um locatário do Azure AD chamado contoso.com que contém os dispositivos mostrados na tabela a seguir.
-                    <br> <img src="imagem/244a.png" alt="Imagem 244a"><br>  
-                    O locatário contém os grupos do Azure AD mostrados na tabela a seguir.                                             
-                 <br> <img src="imagem/244b.png" alt="Imagem 244b"><br>  
-                 Você adiciona um perfil de implantação do Autopilot conforme mostrado na exposição a seguir.  
-                 <br> <img src="imagem/244c.png" alt="Imagem 244c"><br>  
-                 Para cada uma das afirmações a seguir, selecione Sim se a afirmação for verdadeira. 
-                <br> Caso contrário, selecione Não. <br>NOTA: Cada seleção correta vale um ponto.
-                <br> <img src="imagem/244d.png" alt="Imagem 244d"><br>  
-            </p>
-             <b> <br>Área de resposta
-                <br>Restrições de dispositivo
-                <br>Windows 10 e posterior:</b><br> <br>
+                    <br> <img src="imagem/245a.png" alt="Imagem 245a"><br>  
+                    Você usa a replicação do sistema de arquivos distribuído (DFS) para replicar imagens em um compartilhamento denominado Produção.
+                    <br>Você define as seguintes configurações no arquivo Bootstrap.ini.
+                    <br> <img src="imagem/245b.png" alt="Imagem 245b"><br>  
+                    Você planeja implantar o Windows 10 nos computadores mostrados na tabela a seguir.
+                    <br> <img src="imagem/245c.png" alt="Imagem 245c"><br>   </p>
+                    Para cada uma das afirmações a seguir, selecione Sim se a afirmação for verdadeira. 
+                    <br>Caso contrário, selecione Não. <br>NOTA: Cada seleção correta vale um ponto.
+                    <br> <img src="imagem/245d.png" alt="Imagem 245d"><br>
 
-                <br><br>Dispositivos que você pode remover do Intune usando
-                a ação Limpar:<br><br>
-            <label>A <input type="checkbox" name="answer" value="a" > Se você redefinir o Dispositivo1, o dispositivo será implantado usando o Autopilot.</label>
-            <label>B <input type="checkbox" name="answer" value="b" > Se você redefinir o Device2, o dispositivo será implantado usando o Autopilot.</label>
-            <label>C <input type="checkbox" name="answer" value="c" > Se você reiniciar o Device3, o dispositivo será implantado usando o Autopilot.</label>
+            
+            <label>A <input type="checkbox" name="answer" value="a" > TB1 baixará a imagem do MDT3.</label>
+            <label>B <input type="checkbox" name="answer" value="b" > DT1 terá um KeyboardLocale de en-gb.</label>
+            <label>C <input type="checkbox" name="answer" value="c" > LT1 baixará a imagem do MDT1.</label>
 
           
             <button onclick="checkAnswer()">Verificar Resposta</button>
@@ -62,11 +58,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C</p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: B e C</p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C</p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: B e C</p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -82,7 +78,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'c' || selectedAnswer.value === 'c';
+        return selectedAnswer.value === 'b' || selectedAnswer.value === 'c';
     }
     </script>
     
@@ -90,7 +86,7 @@
         <div id="resultContainer"></div>
 
         <!-- Botão para a próxima pergunta -->
-        <button id="nextButton" onclick="nextQuestion('245.html')">Próxima Pergunta</button>
+        <button id="nextButton" onclick="nextQuestion('246.html')">Próxima Pergunta</button>
 
         <!-- Contêiner para exibir o PDF -->
         <div id="pdfContainer" style="display: none;">

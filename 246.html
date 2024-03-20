@@ -16,28 +16,28 @@
 
         <div id="questionContainer">
             <p id="question">
-                <b> 244- PONTO DE ACESSO
-                    Você tem um locatário do Azure AD chamado contoso.com que contém os dispositivos mostrados na tabela a seguir.
-                    <br> <img src="imagem/244a.png" alt="Imagem 244a"><br>  
-                    O locatário contém os grupos do Azure AD mostrados na tabela a seguir.                                             
-                 <br> <img src="imagem/244b.png" alt="Imagem 244b"><br>  
-                 Você adiciona um perfil de implantação do Autopilot conforme mostrado na exposição a seguir.  
-                 <br> <img src="imagem/244c.png" alt="Imagem 244c"><br>  
-                 Para cada uma das afirmações a seguir, selecione Sim se a afirmação for verdadeira. 
-                <br> Caso contrário, selecione Não. <br>NOTA: Cada seleção correta vale um ponto.
-                <br> <img src="imagem/244d.png" alt="Imagem 244d"><br>  
+                <b> <br>246- Você tem uma assinatura do Microsoft 365 que contém 1.000 dispositivos Android registrados no Microsoft Intune.
+                    <br>Você cria uma política de configuração de aplicativo que contém as seguintes configurações:
+                    <br>• Tipo de registro de dispositivo: dispositivos gerenciados
+                    <br>• Tipo de perfil: todos os tipos de perfil
+                   <br> • Plataforma: Android Enterprise
+                    <br>Quais são os dois tipos de aplicativos que podem ser associados à política? 
+                    <br>Cada resposta correta apresenta uma solução completa.
+                    <br>NOTA: Cada seleção correta vale um ponto.
+                    </b>
+                                                                     
+                                  
             </p>
-             <b> <br>Área de resposta
-                <br>Restrições de dispositivo
-                <br>Windows 10 e posterior:</b><br> <br>
-
-                <br><br>Dispositivos que você pode remover do Intune usando
-                a ação Limpar:<br><br>
-            <label>A <input type="checkbox" name="answer" value="a" > Se você redefinir o Dispositivo1, o dispositivo será implantado usando o Autopilot.</label>
-            <label>B <input type="checkbox" name="answer" value="b" > Se você redefinir o Device2, o dispositivo será implantado usando o Autopilot.</label>
-            <label>C <input type="checkbox" name="answer" value="c" > Se você reiniciar o Device3, o dispositivo será implantado usando o Autopilot.</label>
-
           
+            <label>A <input type="checkbox" name="answer" value="a" > Aplicativo do sistema Android Enterprise</label>
+            <label>B <input type="checkbox" name="answer" value="b" > Link da Web</label>
+            <label>C <input type="checkbox" name="answer" value="c" > Aplicativo da loja Android</label>
+            <label>D <input type="checkbox" name="answer" value="d" > Aplicativo gerenciado da Google Play Store</label>
+            <label>E <input type="checkbox" name="answer" value="e" > Aplicativo Android integrado</label>
+
+
+
+       
             <button onclick="checkAnswer()">Verificar Resposta</button>
         </div>
         
@@ -62,11 +62,11 @@
             if (checkIndividualAnswer(selectedAnswer)) {
                 correctAnswers++;
                 resultContainer.className = 'correct';
-                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: C</p>';
+                resultContainer.innerHTML = '<p>Resposta correta ou parcialmente correta! Resposta correta: A e D </p>';
             } else {
                 incorrectAnswers++;
                 resultContainer.className = 'incorrect';
-                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: C</p>';
+                resultContainer.innerHTML = '<p>Você errou. A Resposta correta: A e D </p>';
             }
         } else {
             alert("Por favor, selecione uma resposta antes de verificar.");
@@ -82,7 +82,7 @@
     function checkIndividualAnswer(selectedAnswer) {
         // Adapte a lógica de verificação conforme necessário
         // Exemplo: Verifica se a resposta selecionada é correta
-        return selectedAnswer.value === 'c' || selectedAnswer.value === 'c';
+        return selectedAnswer.value === 'a' || selectedAnswer.value === 'd';
     }
     </script>
     
@@ -90,7 +90,7 @@
         <div id="resultContainer"></div>
 
         <!-- Botão para a próxima pergunta -->
-        <button id="nextButton" onclick="nextQuestion('245.html')">Próxima Pergunta</button>
+        <button id="nextButton" onclick="nextQuestion('247.html')">Próxima Pergunta</button>
 
         <!-- Contêiner para exibir o PDF -->
         <div id="pdfContainer" style="display: none;">
