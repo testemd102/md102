@@ -189,6 +189,22 @@ function checkIndividualAnswer(selectedAnswer) {
           <button id="restartButton" onclick="restartTest()" style="display: none;">Reiniciar Teste</button>
     </div>
 
+    <script>// auth.js
+
+        var SESSION_DURATION = 48 * 60 * 60 * 1000; // 48 horas em milissegundos
+        
+        function isUserLoggedIn() {
+            var loggedInTime = localStorage.getItem('loggedInTime');
+            if (!loggedInTime) return false; // Se não houver um tempo de login registrado, o usuário não está logado
+            var currentTime = Date.now();
+            return (currentTime - loggedInTime) <= SESSION_DURATION;
+        }
+        
+        if (!isUserLoggedIn()) {
+            window.location.href = "index.html"; // Redirecionar para a página de login se o usuário não estiver logado
+        }
+        </script>
+
     <script src="script.js"></script>
 </body>
 </html>

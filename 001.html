@@ -10,7 +10,14 @@
  <!-- A pergunta começa aqui -->
 
       <div class="container">
-        <h1>Escolha o Grupo de perguntas</h1>
+        <h1>Escolha o Grupo de perguntas <button onclick="logout()">Sair</button>
+
+            <script>
+                function logout() {
+                    localStorage.removeItem('loggedInTime');
+                    window.location.href = "index.html"; // Redirecionar para a página de login após sair
+                }
+            </script></h1>
        
 
         <div id="grupo">

@@ -1,70 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faça o login</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    #login-container {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
 </head>
-<body class="teladelogin">
+<body>
 
-    <form class="membro">
-        <span class="titulodomembro">
-            Área do Membro
-        </span>
-    <form class="my-form">
-        <div>
-        <div><label for="email">Email</label></div>
-        <input type="email" name="email" id="email" class="my-email-input" onchange="validateFields()" placeholder="seu@email.com"/>
-        </div>
-        <div>
-        <div><label for="password">Senha</label></div>
-        <input type="password" name="password" id="password" class="my-password-input" placeholder="Senha"/>
-        </div>
-        <div class="botao">
-            <div><button type="button" class="my-clear-button" id="recover-password-button" disabled="true">Recuperar senha</button></div>
-            <div><button type="submit" class="my-solid-button" disabled="true">Entrar</button> </div>
-            <div> <button type="button" class="my-outline-button">Registrar</button></div>
-
-        </div>
-
+<div id="login-container">
+    <h2>Login</h2>
+    <form id="login-form" onsubmit="return validateLogin()">
+        <input type="text" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
     </form>
+    <p id="error-msg" style="color: red; display: none;">Usuário ou senha inválidos.</p>
+</div>
 
-    
-    </style>
-    <script>
+<script>
+    var SESSION_DURATION = 48 * 60 * 60 * 1000; // 48 horas em milissegundos
+    var users = [
+        { email: "kiluatop1@gmail.com", passwordHash: "202cb962ac59075b964b07152d234b70" }, // hash MD5 da senha "123"
+        { email: "kiluatop2@gmail.com", passwordHash: "e10adc3949ba59abbe56e057f20f883e" }  // hash MD5 da senha "123456"
+    ];
 
-function validateFields(){
-    const emailValid = isEmailvalid();
-    document.getElementById('recover-password-button').disabled = !emailIvalid;
+    function validateLogin() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var passwordHash = md5(password);
 
-const password = isPasswordValid();
-document
+        for (var i = 0; i < users.length; i++) {
+            if (email === users[i].email && passwordHash === users[i].passwordHash) {
+                localStorage.setItem('loggedInTime', Date.now());
+                window.location.href = "001.html";
+                return false;
+            }
+        }
 
-
-function validateEmail(email){
-        return /\S+@\S+\.\S+/.test(email);
-}
-function isEmailvalid(){
-    const email = document.getelementById("email").value;
-    if (!email){
+        document.getElementById("error-msg").style.display = "block";
         return false;
     }
-    return validateEmail(email);
-function isPasswordValid() {
-const password = document.getElementById('password').value;
-if (!password) {
-    return false;
-}
-    return true;
 
-}
+    function isSessionExpired() {
+        var loggedInTime = localStorage.getItem('loggedInTime');
+        if (!loggedInTime) return true; // Se não houver um tempo de login registrado, a sessão é considerada expirada
+        var currentTime = Date.now();
+        return (currentTime - loggedInTime) > SESSION_DURATION;
+    }
 
-}
+    if (isSessionExpired()) {
+        localStorage.removeItem('loggedInTime'); // Limpar o tempo de login
+    } else {
+        window.location.href = "001.html"; // Redirecionar para a página principal se a sessão ainda estiver válida
+    }
 
-}
-    </script>
+    function md5(plain) {
+        return CryptoJS.MD5(plain).toString();
+    }
+</script>
+<script src="auth.js"></script>
 
-    <script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
 </body>
 </html>
