@@ -53,14 +53,14 @@ function checkAnswer() {
 
     if (selectedAnswer) {
         totalQuestions++;
-        if (selectedAnswer.value === 'd') {
+        if (selectedAnswer.value === 'a') {
             correctAnswers++;
             resultContainer.className = 'correct';
             resultContainer.innerHTML = '<p>Você acertou!</p>';
         } else {
             incorrectAnswers++;
             resultContainer.className = 'incorrect';
-            resultContainer.innerHTML = '<p>Você errou. A resposta correta é D.</p>';
+            resultContainer.innerHTML = '<p>Você errou. A resposta correta é A.</p>';
         }
     } else {
         alert("Por favor, selecione uma resposta antes de verificar.");
